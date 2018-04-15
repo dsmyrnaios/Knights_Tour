@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Knight's tour</title>
+	<link rel="stylesheet" type="text/css" href="KnightsTour.css">
+</head>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="KnightsTour.js"></script>
+
+<body>
+	<br>
+	<form>
+		Number of rows
+		<input type="text" name="rows" id="rows" value="8">
+		<br> Number of columns
+		<input type="text" name="columns" id="columns" value="8">
+		<br> Box Size (px)
+		<input type="text" name="boxSize" id="boxSize" value="50">
+		<br> Delay (ms)
+		<input type="text" name="delay" id="delay" value="50">
+		<br>
+		<input type="Button" Value="Create Chess!" onClick="init(this.form)">
+	</form>
+	<canvas id="myCanvas"></canvas>
+	<br>
+	<button onclick="myFunction()">Go Knight Go!</button>
+
+</body>
+
+</html>
