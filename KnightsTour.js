@@ -1,7 +1,6 @@
-var canvas, context, numofBoxesI, numofBoxesJ, form, delay, boxSize;
+var canvas, context, numofBoxesI, numofBoxesJ, delay, boxSize;
 
-function init(frm) {
-    form = jQuery.extend({}, frm);
+function init(frm) {    
     canvas = document.getElementById('myCanvas');
     context = canvas.getContext('2d');
 
@@ -34,12 +33,12 @@ function init(frm) {
 
 }
 
-function ChessPosition(i, j) {
+function chessPosition(i, j) {
     this.posI = i;
     this.posJ = j;
 }
 
-function Box(isMarked, positionI, positionJ) {
+function box(isMarked, positionI, positionJ) {
     this.isMarked = isMarked;
     this.positionI = positionI;
     this.positionJ = positionJ;
@@ -48,38 +47,38 @@ function Box(isMarked, positionI, positionJ) {
 
     //check all moves			
     if (positionI - 2 >= 0 && positionJ - 1 >= 0) {
-        this.listMoves.push(new ChessPosition(positionI - 2, positionJ - 1));
+        this.listMoves.push(new chessPosition(positionI - 2, positionJ - 1));
         this.moves++;
     }
     if (positionI - 2 >= 0 && positionJ + 1 <= numofBoxesJ - 1) {
-        this.listMoves.push(new ChessPosition(positionI - 2, positionJ + 1));
+        this.listMoves.push(new chessPosition(positionI - 2, positionJ + 1));
         this.moves++;
     }
 
     if (positionI + 2 <= numofBoxesI - 1 && positionJ - 1 >= 0) {
-        this.listMoves.push(new ChessPosition(positionI + 2, positionJ - 1));
+        this.listMoves.push(new chessPosition(positionI + 2, positionJ - 1));
         this.moves++;
     }
     if (positionI + 2 <= numofBoxesI - 1 && positionJ + 1 <= numofBoxesJ - 1) {
-        this.listMoves.push(new ChessPosition(positionI + 2, positionJ + 1));
+        this.listMoves.push(new chessPosition(positionI + 2, positionJ + 1));
         this.moves++;
     }
 
     if (positionI - 1 >= 0 && positionJ - 2 >= 0) {
-        this.listMoves.push(new ChessPosition(positionI - 1, positionJ - 2));
+        this.listMoves.push(new chessPosition(positionI - 1, positionJ - 2));
         this.moves++;
     }
     if (positionI - 1 >= 0 && positionJ + 2 <= numofBoxesJ - 1) {
-        this.listMoves.push(new ChessPosition(positionI - 1, positionJ + 2));
+        this.listMoves.push(new chessPosition(positionI - 1, positionJ + 2));
         this.moves++;
     }
 
     if (positionI + 1 <= numofBoxesI - 1 && positionJ - 2 >= 0) {
-        this.listMoves.push(new ChessPosition(positionI + 1, positionJ - 2));
+        this.listMoves.push(new chessPosition(positionI + 1, positionJ - 2));
         this.moves++;
     }
     if (positionI + 1 <= numofBoxesI - 1 && positionJ + 2 <= numofBoxesJ - 1) {
-        this.listMoves.push(new ChessPosition(positionI + 1, positionJ + 2));
+        this.listMoves.push(new chessPosition(positionI + 1, positionJ + 2));
         this.moves++;
     }
 
@@ -96,11 +95,11 @@ function myFunction() {
 
     for (var i = 0; i < numofBoxesI; i++) {
         for (var j = 0; j < numofBoxesJ; j++) {
-            arr[i][j] = new Box(false, i, j);
+            arr[i][j] = new box(false, i, j);
         }
     }
 
-    var currentPos = new ChessPosition(Math.round(numofBoxesI / 2 - 0.1), Math.round(numofBoxesJ / 2 - 0.1));
+    var currentPos = new chessPosition(Math.round(numofBoxesI / 2 - 0.1), Math.round(numofBoxesJ / 2 - 0.1));
 
     var tt;
     for (var i = 0; i < numofBoxesI; i++) {
@@ -133,7 +132,7 @@ function chooseYourMove(pos) {
         tmp = arr[pos.posI][pos.posJ].listMoves[i];
 
         if (arr[tmp.posI][tmp.posJ].moves < tempMoves && arr[tmp.posI][tmp.posJ].isMarked == false) {
-            nextPos = new ChessPosition(tmp.posI, tmp.posJ);
+            nextPos = new chessPosition(tmp.posI, tmp.posJ);
             tempMoves = arr[tmp.posI][tmp.posJ].moves;
         }
     }
